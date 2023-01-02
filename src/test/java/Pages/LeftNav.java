@@ -17,8 +17,7 @@ public class LeftNav extends Parent {
     private WebElement parameters;
     @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')]/following-sibling::span)[51]")
     private WebElement humanResrc;
-    //(//fa-icon[contains(@class,'ng-fa-ico')]/following-sibling::span)[51]
-    //(//fa-icon[contains(@class,'ng-fa-ico')])[61]
+
     @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')])[63]")
     private WebElement positionSetup;
     @FindBy(xpath = "(//fuse-nav-vertical-item[contains(@class,'ng-tns-c2')])[48]")
