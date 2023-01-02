@@ -25,6 +25,8 @@ public class LeftNav extends Parent {
     private WebElement educationSetup;
     @FindBy(xpath = "(//fuse-nav-vertical-item[contains(@class,'ng-tns-c2')])[67]")
     private WebElement subjectCategories;
+    @FindBy(xpath = "(//span[text()='Nationalities'])[1]")
+    private WebElement nationalities;
 
     WebElement myElement;
     public void findAndClick(String strlement)
@@ -35,6 +37,7 @@ public class LeftNav extends Parent {
             case "positionSetup": myElement=positionSetup;break;
             case "positions": myElement=positions;break;
             case "education": myElement=education;break;
+            case "nationalities": myElement=nationalities;break;
             case "educationSetup": myElement=educationSetup;break;
             case "subjectCategories": myElement=subjectCategories;break;
         }
