@@ -11,6 +11,10 @@ public class LeftNav extends Parent {
         PageFactory.initElements(GeneralWD.getDriver(), this);
     }
 
+    @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')])[5]")
+    private WebElement setupOne;
+    @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')])[7]")
+    private WebElement parameters;
     @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')]/following-sibling::span)[51]")
     private WebElement humanResrc;
     //(//fa-icon[contains(@class,'ng-fa-ico')]/following-sibling::span)[51]
@@ -26,18 +30,20 @@ public class LeftNav extends Parent {
     @FindBy(xpath = "(//fuse-nav-vertical-item[contains(@class,'ng-tns-c2')])[67]")
     private WebElement subjectCategories;
     @FindBy(xpath = "(//span[text()='Nationalities'])[1]")
-    private WebElement nationalities;
+    private WebElement nationality;
 
     WebElement myElement;
     public void findAndClick(String strlement)
     {
         switch (strlement)
         {
+            case "setupOne": myElement=setupOne;break;
+            case "parameters": myElement=parameters;break;
+            case "nationality": myElement=nationality;break;
             case "humanResrc": myElement=humanResrc;break;
             case "positionSetup": myElement=positionSetup;break;
             case "positions": myElement=positions;break;
             case "education": myElement=education;break;
-            case "nationalities": myElement=nationalities;break;
             case "educationSetup": myElement=educationSetup;break;
             case "subjectCategories": myElement=subjectCategories;break;
         }

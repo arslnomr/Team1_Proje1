@@ -1,9 +1,12 @@
 package Pages;
 
 import Utilities.GeneralWD;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class DialogContent extends Parent{
     public DialogContent() {
@@ -28,26 +31,40 @@ public class DialogContent extends Parent{
     private WebElement shortName;
     @FindBy(xpath = "//ms-text-field[@formcontrolname='code']//input")
     private WebElement codeInput;
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='order']//input")
+    private WebElement orderInput;
     @FindBy(xpath = "//ms-save-button//button")
     private WebElement saveButton;
     @FindBy(xpath = "//div[contains(text(),'successfully')]")
     private WebElement successMessage;
     @FindBy(xpath = "//div[contains(text(),'already exists')]")
     private WebElement alreadyExist;
-    @FindBy(xpath = "(//ms-text-field[contains(@placeholder,'NAME')]//input)[1]")
+    @FindBy(xpath = "(//div[contains(@class,'mat-form-f')]//input)[1]")
     private WebElement searchInput;
     @FindBy(xpath = "//ms-search-button//button")
     private WebElement searchButton;
-    @FindBy(xpath = "(//ms-delete-button//button)[1]")
+    @FindBy(xpath = "//ms-delete-button//button")
     private WebElement deleteButton;
+    @FindBy(xpath = "//td[contains(@class,'column-name mat-column-name')]")
+    public List<WebElement> nameList;
     @FindBy(xpath = "//span[text()=' Delete ']")
     private WebElement deleteDialogBtn;
     @FindBy(xpath = "(//td[@role='cell'])[2]")
     private WebElement searchResultCell;
     @FindBy(xpath = "(//ms-edit-button[contains(@table,'true')]//button)")
     private WebElement editButton;
+    //(//fa-icon[contains(@class,'ng-fa-icon')])[164]
     @FindBy(xpath = "//ms-text-field[@formcontrolname='code']//input")
-    private WebElement educationCode;
+    private WebElement code;
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='description']//input")
+    private WebElement description;
+    @FindBy(xpath = "//ms-integer-field[@formcontrolname='priority']//input")
+    private WebElement priority;
+    @FindBy(xpath="//mat-slide-toggle[@formcontrolname='active']")
+    private WebElement  toggleBar;
+    @FindBy(xpath="(//ms-text-field[contains(@placeholder,'.DESCRIPTION')]//input)[1]")
+    private WebElement  searchDescription;
+
 
 
     WebElement myElement;
@@ -59,8 +76,12 @@ public class DialogContent extends Parent{
             case "nameInput":myElement = nameInput;break;
             case "codeInput":myElement = codeInput;break;
             case "shortName":myElement = shortName;break;
+            case "orderInput":myElement=orderInput;break;
             case "searchInput":myElement = searchInput;break;
-            case "educationCode":myElement = educationCode;break;
+            case "code":myElement = code;break;
+            case "description":myElement = description;break;
+            case "priority":myElement = priority;break;
+            case "searchDescription":myElement = searchDescription;break;
         }
         sendKeysFunction(myElement,value);
     }
@@ -72,9 +93,10 @@ public class DialogContent extends Parent{
             case "saveButton":myElement = saveButton;break;
             case "acceptCookies":myElement = acceptCookies;break;
             case "searchButton":myElement = searchButton;break;
-            case "deleteButton":myElement = deleteButton;break;
             case "deleteDialogBtn":myElement = deleteDialogBtn;break;
             case "editButton": myElement=editButton;break;
+            case "toggleBar": myElement=toggleBar;break;
+            case "deleteButton": myElement=deleteButton;break;
         }
         clickFunction(myElement);
     }
@@ -104,5 +126,25 @@ public class DialogContent extends Parent{
         findAndClick("deleteDialogBtn");
 
     }
+
+    public void findAndDelete2(String searchText) {
+
+        findAndSend("searchDescription", searchText);
+        findAndClick("searchButton");
+
+        //wait.until(ExpectedConditions.stalenessOf(deleteButton)); stale zamanını yakalayamadım
+        //wait.until(ExpectedConditions.numberOfElementsToBeLessThan(By.xpath("//tbody[@role='rowgroup']//tr"),5));
+        waitUntilLoading();
+
+        findAndClick("deleteButton");
+        findAndClick("deleteDialogBtn");
+
+    }
+
+
+
+
+
+
 
 }

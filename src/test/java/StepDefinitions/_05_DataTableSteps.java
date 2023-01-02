@@ -5,19 +5,20 @@ import Pages.LeftNav;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
 public class _05_DataTableSteps {
-    LeftNav ln=new LeftNav();
-    DialogContent dc=new DialogContent();
+    LeftNav ln = new LeftNav();
+    DialogContent dc = new DialogContent();
 
 
     @And("Click on the element in left nav")
     public void clickOnTheElementInLeftNav(DataTable elemanlar) {
-        List<String> listElemanlar= elemanlar.asList(String.class);
+        List<String> listElemanlar = elemanlar.asList(String.class);
 
-        for(String strButtonName : listElemanlar) {
+        for (String strButtonName : listElemanlar) {
             //System.out.println("eleman = " + eleman);
             ln.findAndClick(strButtonName);
         }
@@ -25,39 +26,60 @@ public class _05_DataTableSteps {
 
     @And("Click on the element in the Dialog")
     public void clickOnTheElementInTheDialog(DataTable elemanlar) {
-        List<String> listElemanlar= elemanlar.asList(String.class);
+        List<String> listElemanlar = elemanlar.asList(String.class);
 
-        for(String strButtonName : listElemanlar)
+        for (String strButtonName : listElemanlar)
             dc.findAndClick(strButtonName);
     }
 
 
     @And("User sending the keys in Dialog content")
     public void userSendingTheKeysInDialogContent(DataTable elemanlar) {
-        List<List<String>> listElemanlar= elemanlar.asLists(String.class);
+        List<List<String>> listElemanlar = elemanlar.asLists(String.class);
 
-        for(int i=0;i< listElemanlar.size() ; i++ )
-            dc.findAndSend(listElemanlar.get(i).get(0), listElemanlar.get(i).get(1) );
-                                  // eleman adı                    eleman değeri
+        for (int i = 0; i < listElemanlar.size(); i++)
+            dc.findAndSend(listElemanlar.get(i).get(0), listElemanlar.get(i).get(1));
+        // eleman adı                    eleman değeri
     }
 
 
     @And("User delete item from Dialog")
     public void userDeleteItemFromDialog(DataTable elemanlar) {
-        List<String> listElemanlar= elemanlar.asList(String.class);
+        List<String> listElemanlar = elemanlar.asList(String.class);
 
-        for(String strButtonName : listElemanlar)
+        for (String strButtonName : listElemanlar)
             dc.findAndDelete(strButtonName);
     }
 
+    @And("User delete description item  from Dialog")
+    public void userDeleteItemDescriptionFromDialog(DataTable elemanlar) {
+        List<String> listElemanlar = elemanlar.asList(String.class);
+
+        for (String strButtonName : listElemanlar)
+            dc.findAndDelete2(strButtonName);
+    }
+
+
     @Then("Success message should be displayed")
     public void successMessageShouldBeDisplayed() {
-        dc.findAndContainsText("successMessage","successfully");
+        dc.findAndContainsText("successMessage", "successfully");
     }
 
     @Then("Already exist message should be displayed")
     public void alreadyExistMessageShouldBeDisplayed() {
-        dc.findAndContainsText("alreadyExist","already");
+        dc.findAndContainsText("alreadyExist", "already");
     }
 
+
+
+
+    @And("grade levels as {string} ismini delete yapiniz.")
+    public void gradeLevelsAsIsminiDeleteYapiniz(String isim) {
+        for (int i = 0; i < dc.nameList.size(); i++) {
+            if (dc.nameList.toString().equalsIgnoreCase(isim)) {
+                dc.findAndClick("deleteButton");
+                dc.findAndClick("deleteDialogBtn");
+            }
+        }
+    }
 }

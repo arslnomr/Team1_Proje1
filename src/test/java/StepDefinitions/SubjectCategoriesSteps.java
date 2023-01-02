@@ -3,10 +3,15 @@ package StepDefinitions;
 import Pages.DialogContent;
 import Pages.LeftNav;
 import Utilities.ExcelUtility;
+import Utilities.GeneralWD;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SubjectCategoriesSteps {
 
@@ -30,12 +35,11 @@ public class SubjectCategoriesSteps {
         for (ArrayList<String> satir : tablo) {
             dc.findAndClick("addButton");
             dc.findAndSend("nameInput", satir.get(0));
-            dc.findAndSend("educationCode", satir.get(1));
+            dc.findAndSend("code", satir.get(1));
             dc.findAndClick("saveButton");
             dc.findAndContainsText("successMessage", "success");
 
         }
-
 
     }
 
@@ -48,7 +52,7 @@ public class SubjectCategoriesSteps {
         for (ArrayList<String> satir : tablo) {
             dc.findAndClick("addButton");
             dc.findAndSend("nameInput", satir.get(0));
-            dc.findAndSend("educationCode", satir.get(1));
+            dc.findAndSend("code", satir.get(1));
             dc.findAndClick("saveButton");
             dc.findAndContainsText("alreadyExist","already");
 
@@ -66,7 +70,7 @@ public class SubjectCategoriesSteps {
         for (ArrayList<String> satir : tablo) {
             dc.findAndClick("editButton");
             dc.findAndSend("nameInput", satir.get(2));
-            dc.findAndSend("educationCode", satir.get(3));
+            dc.findAndSend("code", satir.get(3));
             dc.findAndClick("saveButton");
             dc.findAndContainsText("successMessage", "success");
 
@@ -86,4 +90,5 @@ public class SubjectCategoriesSteps {
         }
 
     }
+
 }

@@ -55,7 +55,7 @@ Feature:HumanResources  Positions Functionalty
     Examples:
       | srcName | name   | shortName |
       | akin    | melike | pek       |
-      | ayse    | akkiz  | ip        |
+      | ayse"    | akkiz  | ip        |
 
 
   Scenario Outline:Delete position to set human resources details
