@@ -67,6 +67,25 @@ public class DialogContent extends Parent{
 
 
 
+    @FindBy(xpath = "//ms-integer-field[@formcontrolname='capacity']//input")
+    private WebElement capacityInput;
+
+    @FindBy(xpath ="//mat-slide-toggle[@formcontrolname='active']" )
+    private WebElement activeBtn;
+
+    @FindBy(xpath = "//ms-masked-text-field[@formcontrolname='iban']//input")
+    private WebElement IbanButonu;
+
+    @FindBy(xpath ="(//*[@formcontrolname='currency']//div)[1]")
+    private WebElement currencyDropdownButonu;
+
+    @FindBy(xpath = "(//mat-option[@role='option']//span)[4]")
+    private WebElement tryBtn;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='integrationCode']//input")
+    private WebElement integresyonKodButonu;
+
+
     WebElement myElement;
 
     public  void  findAndSend(String strElement, String value){
@@ -82,6 +101,7 @@ public class DialogContent extends Parent{
             case "description":myElement = description;break;
             case "priority":myElement = priority;break;
             case "searchDescription":myElement = searchDescription;break;
+            case "capacityInput":myElement = capacityInput;break;
         }
         sendKeysFunction(myElement,value);
     }
@@ -97,6 +117,15 @@ public class DialogContent extends Parent{
             case "editButton": myElement=editButton;break;
             case "toggleBar": myElement=toggleBar;break;
             case "deleteButton": myElement=deleteButton;break;
+            case "activeBtn": myElement=activeBtn;break;
+            case "IbanButonu": myElement=IbanButonu;break;
+            case "currencyDropdownButonu": myElement=currencyDropdownButonu;break;
+            case "tryBtn": myElement=tryBtn;break;
+            case "integresyonKodButonu": myElement=integresyonKodButonu;break;
+
+
+
+
         }
         clickFunction(myElement);
     }
