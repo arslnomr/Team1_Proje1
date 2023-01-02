@@ -11,6 +11,13 @@ public class LeftNav extends Parent {
         PageFactory.initElements(GeneralWD.getDriver(), this);
     }
 
+    @FindBy(xpath = "(//span[text()='Setup'])[1]")
+    private WebElement setUp;
+    @FindBy(xpath = "(//span[text()='Parameters'])[1]")
+    private WebElement parameters;
+
+    @FindBy(xpath = "(//span[text()='Nationalities'])[1]")
+    private WebElement nationalities;
     @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')]/following-sibling::span)[51]")
     private WebElement humanResrc;
     //(//fa-icon[contains(@class,'ng-fa-ico')]/following-sibling::span)[51]
@@ -31,7 +38,9 @@ public class LeftNav extends Parent {
     {
         switch (strlement)
         {
-            case "humanResrc": myElement=humanResrc;break;
+            case "setUp":myElement = setUp;break;
+            case "parameters":myElement = parameters;break; case "humanResrc": myElement=humanResrc;break;
+            case "nationalities":myElement = nationalities;break;
             case "positionSetup": myElement=positionSetup;break;
             case "positions": myElement=positions;break;
             case "education": myElement=education;break;
