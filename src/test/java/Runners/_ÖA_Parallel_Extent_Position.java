@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 @CucumberOptions(
-        features = {"src/test/java/FeatureFiles/H_Resources_Position_Ö_A.feature"},
+        features = {"src/test/java/FeatureFiles/H_R_Position_Ö_A.feature"},
         glue = {"StepDefinitions"},
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 )

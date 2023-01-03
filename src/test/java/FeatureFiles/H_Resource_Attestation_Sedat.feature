@@ -9,25 +9,24 @@ Feature:HumanResources  Attestation Functionalty
   Scenario :Add Attestation to set up details of human resources
 
     And Click on the element in left nav
-| humanResrc    |
-| positionSetup |
-| AttestationBtn |
-And Click on the element in the Dialog
-| addButton |
-And User sending the keys in Dialog content
-| nameInput | mahmut  |
+      | humanResrc     |
+      | positionSetup  |
+      | AttestationBtn |
+    And Click on the element in the Dialog
+      | addButton |
+    And User sending the keys in Dialog content
+      | nameInput | mahmut |
+    And Click on the element in the Dialog
+      | saveButton |
+    Then Success message should be displayed
 
-And Click on the element in the Dialog
-| saveButton |
-Then Success message should be displayed
 
-
-  Scenario :Edit position to set human resources details
+  Scenario :Edit Attestation to set up details of human resources
 
     And Click on the element in left nav
-      | humanResrc    |
-      | positionSetup |
-      | AttestationBtn     |
+      | humanResrc     |
+      | positionSetup  |
+      | AttestationBtn |
     And User sending the keys in Dialog content
       | searchInput | mahmut |
     And Click on the element in the Dialog
@@ -36,19 +35,17 @@ Then Success message should be displayed
       | editButton |
     And User sending the keys in Dialog content
       | nameInput | mehmet |
-
     And Click on the element in the Dialog
       | saveButton |
     Then Success message should be displayed
 
 
-
-  Scenario :Delete position to set human resources details
+  Scenario :Delete Attestation to set up details of human resources
 
     And Click on the element in left nav
-      | humanResrc    |
-      | positionSetup |
-      | AttestationBtn     |
+      | humanResrc     |
+      | positionSetup  |
+      | AttestationBtn |
     And User delete item from Dialog
       | mehmet |
     Then Success message should be displayed

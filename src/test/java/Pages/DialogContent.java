@@ -51,9 +51,9 @@ public class DialogContent extends Parent{
     private WebElement deleteDialogBtn;
     @FindBy(xpath = "(//td[@role='cell'])[2]")
     private WebElement searchResultCell;
-    @FindBy(xpath = "(//ms-edit-button[contains(@table,'true')]//button)")
+    @FindBy(xpath = "//ms-edit-button[contains(@table,'true')]//button")
     private WebElement editButton;
-    //(//fa-icon[contains(@class,'ng-fa-icon')])[164]
+    // (//fa-icon[contains(@class,'fa-icon')])[164]
     @FindBy(xpath = "//ms-text-field[@formcontrolname='code']//input")
     private WebElement code;
     @FindBy(xpath = "//ms-text-field[@formcontrolname='description']//input")
@@ -65,23 +65,16 @@ public class DialogContent extends Parent{
     @FindBy(xpath="(//ms-text-field[contains(@placeholder,'.DESCRIPTION')]//input)[1]")
     private WebElement  searchDescription;
 
-
-
     @FindBy(xpath = "//ms-integer-field[@formcontrolname='capacity']//input")
     private WebElement capacityInput;
-
     @FindBy(xpath ="//mat-slide-toggle[@formcontrolname='active']" )
     private WebElement activeBtn;
-
     @FindBy(xpath = "//ms-masked-text-field[@formcontrolname='iban']//input")
     private WebElement IbanButonu;
-
     @FindBy(xpath ="(//*[@formcontrolname='currency']//div)[1]")
     private WebElement currencyDropdownButonu;
-
     @FindBy(xpath = "(//mat-option[@role='option']//span)[4]")
     private WebElement tryBtn;
-
     @FindBy(xpath = "//ms-text-field[@formcontrolname='integrationCode']//input")
     private WebElement integresyonKodButonu;
 
@@ -114,7 +107,7 @@ public class DialogContent extends Parent{
             case "acceptCookies":myElement = acceptCookies;break;
             case "searchButton":myElement = searchButton;break;
             case "deleteDialogBtn":myElement = deleteDialogBtn;break;
-            case "editButton": myElement=editButton;break;
+            case "editButton":myElement = editButton;break;
             case "toggleBar": myElement=toggleBar;break;
             case "deleteButton": myElement=deleteButton;break;
             case "activeBtn": myElement=activeBtn;break;
@@ -169,11 +162,4 @@ public class DialogContent extends Parent{
         findAndClick("deleteDialogBtn");
 
     }
-
-
-
-
-
-
-
 }

@@ -13,12 +13,13 @@ public class LeftNav extends Parent {
 
     @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')])[5]")
     private WebElement setupOne;
-    @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')])[7]")
+    @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')])[6]")
     private WebElement parameters;
+    @FindBy(xpath="(//fuse-nav-vertical-item[contains(@class,'ng-tns-c2')])[7]")
+    private WebElement  discounts;
     @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')]/following-sibling::span)[51]")
     private WebElement humanResrc;
-
-    @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')])[63]")
+    @FindBy(xpath = "(//fa-icon[contains(@class,'collapsable-arrow')])[11]")
     private WebElement positionSetup;
     @FindBy(xpath = "(//fuse-nav-vertical-item[contains(@class,'ng-tns-c2')])[48]")
     private WebElement positions;
@@ -30,15 +31,12 @@ public class LeftNav extends Parent {
     private WebElement subjectCategories;
     @FindBy(xpath = "(//span[text()='Nationalities'])[1]")
     private WebElement nationality;
-    @FindBy(xpath = "//span[text()='School Setup']")
+    @FindBy(xpath = "(//fa-icon[contains(@class,'ng-fa-ico')])[21]")
     private WebElement schoolSetup;
-
     @FindBy(xpath = "//span[text()='Locations']")
     private WebElement locations;
-
     @FindBy(xpath = "//span[text()='Departments']")
     private WebElement departments;
-
     @FindBy(xpath = "(//span[text()='Attestations'])[1]")
     private WebElement attestationBtn;
 
@@ -49,6 +47,7 @@ public class LeftNav extends Parent {
         {
             case "setupOne": myElement=setupOne;break;
             case "parameters": myElement=parameters;break;
+            case "discounts": myElement=discounts;break;
             case "nationality": myElement=nationality;break;
             case "humanResrc": myElement=humanResrc;break;
             case "positionSetup": myElement=positionSetup;break;
@@ -61,7 +60,6 @@ public class LeftNav extends Parent {
             case "departments": myElement=departments;break;
             case "attestationBtn": myElement=attestationBtn;break;
         }
-
         clickFunction(myElement);
     }
 }

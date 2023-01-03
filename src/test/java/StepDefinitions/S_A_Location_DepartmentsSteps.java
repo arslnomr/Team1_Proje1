@@ -3,11 +3,10 @@ package StepDefinitions;
 import Pages.DialogContent;
 import Pages.LeftNav;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.commons.lang3.RandomStringUtils;
 
-public class Sedat_LocationSteps {
+public class S_A_Location_DepartmentsSteps {
     LeftNav ln=new LeftNav();
     DialogContent dc=new DialogContent();
 
@@ -25,23 +24,12 @@ public class Sedat_LocationSteps {
         String randomGenName= RandomStringUtils.randomAlphanumeric(8);
         String randomGenShortName=RandomStringUtils.randomNumeric(5);
 
-        dc.findAndClick("addLocationButton");
+        dc.findAndClick("addButton");
         dc.findAndSend("nameInput", randomGenName);
-        dc.findAndSend("shortNameInput",randomGenShortName);
+        dc.findAndSend("shortName",randomGenShortName);
         dc.findAndSend("capacityInput","12");
         dc.findAndClick("activeBtn");
         dc.findAndClick("saveButton");
-
-    }
-    @Then("Success message should be displayed")
-    public void successMessageShouldBeDisplayed() {
-
-        dc.findAndContainsText("successMessage","success");
-        dc.findAndContainsText("successDeleteMessage","success");
-        dc.findAndContainsText("successCreateMessage","success");
-        dc.findAndContainsText("successdeletedMessage","success");
-        dc.findAndContainsText("AccountSuccessfully","success");
-        dc.findAndContainsText("basarilideletedMessage","success");
 
     }
 
@@ -61,9 +49,34 @@ public class Sedat_LocationSteps {
     public void deleteASchoolLocation() {
 
       dc.findAndClick("deleteButton");
-      dc.findAndClick("dltBtn");
+      dc.findAndClick("deleteDialogBtn");
+    }
+
+    @And("Navigate to Departments page")
+    public void navigateToDepartmentsPage() {
+
+        ln.findAndClick("setupOne");
+        ln.findAndClick("schoolSetup");
+        ln.findAndClick("departments");
 
 
+    }
 
+    @When("create  a departments")
+    public void createADepartments() {
+        String randomGenName= RandomStringUtils.randomAlphanumeric(8);
+        String randomGencodeName=RandomStringUtils.randomNumeric(5);
+
+        dc.findAndClick("addButton");
+        dc.findAndSend("nameInput",randomGenName);
+        dc.findAndSend("codeInput",randomGencodeName);
+        dc.findAndClick("saveButton");
+
+    }
+
+    @When("delete a school departments")
+    public void deleteASchoolDepartments() {
+        dc.findAndClick("deleteButton");
+        dc.findAndClick("deleteDialogBtn");
     }
 }
