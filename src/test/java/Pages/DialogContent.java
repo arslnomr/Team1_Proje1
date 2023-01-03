@@ -48,6 +48,14 @@ public class DialogContent extends Parent{
     private WebElement editButton;
     @FindBy(xpath = "//ms-text-field[@formcontrolname='code']//input")
     private WebElement educationCode;
+    @FindBy(xpath="//ms-masked-text-field[@formcontrolname='iban']/input")
+    private WebElement iban;
+    @FindBy(xpath="(//mat-select[@formcontrolname='currency']/div/div/span)[1]")
+    private WebElement currency;
+    @FindBy(xpath="(//mat-option[@role='option']/span)[2]")
+    private WebElement currency2;
+    @FindBy(xpath="//ms-text-field[@formcontrolname='integrationCode']/input")
+    private WebElement IntegrationCode;
 
 
     WebElement myElement;
@@ -57,6 +65,8 @@ public class DialogContent extends Parent{
             case "username":myElement=username;break;
             case "password":myElement=password;break;
             case "nameInput":myElement = nameInput;break;
+            case "iban":myElement = iban;break;
+            case "IntegrationCode":myElement = IntegrationCode;break;
             case "codeInput":myElement = codeInput;break;
             case "shortName":myElement = shortName;break;
             case "searchInput":myElement = searchInput;break;
@@ -68,6 +78,8 @@ public class DialogContent extends Parent{
     public void findAndClick(String strElement){
         switch (strElement){
             case "loginButton":myElement=loginButton;break;
+            case "currency":myElement = currency;break;
+            case "currency2":myElement = currency2;break;
             case "addButton":myElement = addButton;break;
             case "saveButton":myElement = saveButton;break;
             case "acceptCookies":myElement = acceptCookies;break;
