@@ -78,6 +78,16 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "//ms-text-field[@formcontrolname='integrationCode']//input")
     private WebElement integresyonKodButonu;
 
+    /********************/
+    @FindBy(xpath="//ms-masked-text-field[@formcontrolname='iban']/input")
+    private WebElement iban;
+    @FindBy(xpath="(//mat-select[@formcontrolname='currency']/div/div/span)[1]")
+    private WebElement currency;
+    @FindBy(xpath="(//mat-option[@role='option']/span)[2]")
+    private WebElement currency2;
+    @FindBy(xpath="//ms-text-field[@formcontrolname='integrationCode']/input")
+    private WebElement IntegrationCode;
+
 
     WebElement myElement;
 
@@ -95,6 +105,8 @@ public class DialogContent extends Parent{
             case "priority":myElement = priority;break;
             case "searchDescription":myElement = searchDescription;break;
             case "capacityInput":myElement = capacityInput;break;
+            case "iban":myElement = iban;break;
+            case "IntegrationCode":myElement = IntegrationCode;break;
         }
         sendKeysFunction(myElement,value);
     }
@@ -115,6 +127,8 @@ public class DialogContent extends Parent{
             case "currencyDropdownButonu": myElement=currencyDropdownButonu;break;
             case "tryBtn": myElement=tryBtn;break;
             case "integresyonKodButonu": myElement=integresyonKodButonu;break;
+            case "currency":myElement = currency;break;
+            case "currency2":myElement = currency2;break;
 
 
 

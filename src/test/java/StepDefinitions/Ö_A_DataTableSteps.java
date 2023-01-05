@@ -2,10 +2,16 @@ package StepDefinitions;
 
 import Pages.DialogContent;
 import Pages.LeftNav;
+import Utilities.GeneralWD;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class Ö_A_DataTableSteps {
@@ -69,16 +75,60 @@ public class Ö_A_DataTableSteps {
         dc.findAndContainsText("alreadyExist", "already");
     }
 
+    @And("gedit user admin as {string} in grade levels")
+    public void geditUserAdminAsInGradeLevels(String isim) {
+
+        WebDriverWait wait = new WebDriverWait(GeneralWD.getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("fuse-progress-bar > *"), 0));
+        WebElement editlist =
+        GeneralWD.getDriver().findElement(By.xpath("//td[contains(text(),'"+isim+"')]//following::div/ms-edit-button"));
+        editlist.click();
+    }
+
+    @And("delete user admin as {string} in grade levels")
+    public void deleteUserAdminAsInGradeLevels(String isim) {
+        WebDriverWait wait = new WebDriverWait(GeneralWD.getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("fuse-progress-bar > *"), 0));
+
+        // WebElement deletelist =
+        // GeneralWD.getDriver().findElement(By.xpath("//td[contains(text(),'"+isim+"')]//following::div/ms-delete-button"));
+        // deletelist.click();
+        // dc.findAndClick("deleteDialogBtn");
 
 
+        List<WebElement> nameliste =
+                GeneralWD.getDriver().findElements(By.xpath("//td[contains(@class,' mat-column-name')]"));
 
-    @And("grade levels as {string} ismini delete yapiniz.")
-    public void gradeLevelsAsIsminiDeleteYapiniz(String isim) {
-        for (int i = 0; i < dc.nameList.size(); i++) {
-            if (dc.nameList.toString().equalsIgnoreCase(isim)) {
-                dc.findAndClick("deleteButton");
+        for (WebElement e: nameliste) {
+
+            if (e.getText().equalsIgnoreCase(isim)) {
+                WebElement btnliste =
+                        GeneralWD.getDriver().findElement(By.xpath("(//*[@data-icon='trash-can'])"));
+                wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("fuse-progress-bar > *"), 0));
+                btnliste.click();
                 dc.findAndClick("deleteDialogBtn");
+
+            }
+        }
+
+    }
+
+
+ /*   @And("Find and Delete on the {string} element in the GradeLevel Content")
+    public void findAndDeleteOnTheElementInTheGradeLevelContent(String name) {
+        WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("fuse-progress-bar > *"), 0));
+        List<WebElement> liste=GWD.getDriver().findElements(By.xpath("(//tbody[@role='rowgroup']//tr//td)"));
+        String editPath="(//*[@data-icon='trash-can'])";
+        for(int i=0;i< liste.size() ; i++ ) {
+            if (liste.get(i).getText().equalsIgnoreCase(name)){
+                editPath=editPath.concat("["+((i/7)+1)+"]");
+
+                WebElement edit= GWD.getDriver().findElement(By.xpath(editPath));
+                edit.click();
             }
         }
     }
+
+  */
 }

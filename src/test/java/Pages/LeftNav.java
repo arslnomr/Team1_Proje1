@@ -39,6 +39,11 @@ public class LeftNav extends Parent {
     private WebElement departments;
     @FindBy(xpath = "(//span[text()='Attestations'])[1]")
     private WebElement attestationBtn;
+    @FindBy(xpath = "(//span[text()='Bank Accounts'])[1]")
+    private WebElement bankAccounts;
+    @FindBy(xpath = "(//fuse-nav-vertical-item[contains(@class,'ng-tns-c2')])[8]")
+    private WebElement gradeLevels;
+
 
     WebElement myElement;
     public void findAndClick(String strlement)
@@ -59,6 +64,8 @@ public class LeftNav extends Parent {
             case "locations": myElement=locations;break;
             case "departments": myElement=departments;break;
             case "attestationBtn": myElement=attestationBtn;break;
+            case "bankAccounts": myElement=bankAccounts;break;
+            case "gradeLevels": myElement=gradeLevels;break;
         }
         clickFunction(myElement);
     }

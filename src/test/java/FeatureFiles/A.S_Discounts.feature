@@ -1,77 +1,60 @@
-Feature:Parameters Discounts Functionalty
+Feature: Discounts function
 
   Background:
     Given Navigate to Mersys
     When Admin entered valid username and valid password and clicked Login Button
     Then Admin user should login successfully
 
-  Scenario Outline:Add discount to set up details of parameters
+  Scenario: Bir Admin olarak indirim kategorisindeki Ekle fonksiyonunu kullanabilme.
+    Given Left navdaki modullere tiklatiniz
 
-    And Click on the element in left nav
-      | setupOne   |
-      | parameters |
-      | discounts  |
-    And Click on the element in the Dialog
-      | addButton |
-    And User sending the keys in Dialog content
-      | description | <description> |
-      | code        | <code>        |
-      | priority    | <priority>    |
+      | Setup      |
+      | Parameters |
+      | Discounts  |
+
+    And Add Discount butonuna tıklayınız.
+    And Form content bilgilerini giriniz
+
+
+      | Description      | ali    |
+      | Integration Code | 969 |
+      | Priority         | 12  |
+
     And Click on the element in the Dialog
       | toggleBar  |
       | saveButton |
+
     Then Success message should be displayed
-    And Click on the element in the Dialog
-      | addButton |
-    And User sending the keys in Dialog content
-      | description | <description> |
-      | code        | <code>        |
-      | priority    | <priority>    |
+
+
+  Scenario: Bir Admin olarak indirim kategorisindeki Edit fonksiyonunu kullanabilme.
+    Given Left navdaki modullere tiklatiniz
+
+      | Setup      |
+      | Parameters |
+      | Discounts  |
+
+    And Edit butonuna tıklayınız.
+    When Description, Integration Code, Priority
+
+      | Description      | c    |
+      | Integration Code | 6969 |
+      | Priority         | 7896 |
+
     And Click on the element in the Dialog
       | toggleBar  |
       | saveButton |
-    Then Already exist message should be displayed
-    Examples:
-      | description | code | priority |
-      | al          | 123  | 5        |
-      | ver         | 345  | 6        |
 
-
-  Scenario Outline:Edit discount to set up details of parameters
-
-    And Click on the element in left nav
-      | setupOne   |
-      | parameters |
-      | discounts  |
-    And User sending the keys in Dialog content
-      | searchDescription | <srcDescription> |
-    And Click on the element in the Dialog
-      | searchButton |
-    And Click on the element in the Dialog
-      | editButton |
-    And User sending the keys in Dialog content
-      | description | <description> |
-      | code        | <code>        |
-      | priority    | <priority>    |
-    And Click on the element in the Dialog
-      | toggleBar  |
-      | saveButton |
     Then Success message should be displayed
-    Examples:
-      | srcDescription | description | code | priority |
-      | al             | ka          | 345  | 9        |
-      | ver            | zim         | 567  | 8        |
+  Scenario Outline: Bir Admin olarak indirim kategorisindeki Delete fonksiyonunu kullanabilme.
+    Given Left navdaki modullere tiklatiniz
 
-  Scenario Outline:Delete discount to set up details of parameters
+      | Setup      |
+      | Parameters |
+      | Discounts  |
 
-    And Click on the element in left nav
-      | setupOne   |
-      | parameters |
-      | discounts  |
-    And User delete description item  from Dialog
-      | <description> |
-    Then Success message should be displayed
+    Then "<Description>" ismini delete yapin.
+
     Examples:
-      | description |
-      | ka          |
-      | zim         |
+      | Description |
+      | c       |

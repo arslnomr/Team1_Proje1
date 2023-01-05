@@ -27,16 +27,40 @@ Feature:Parameters grade levels Functionalty
       | ka   | zim       | 4          |
 
 
-  Scenario Outline:Delete position to set human resources details
+  Scenario Outline:Edit Grade level to set up details of parameters
 
     And Click on the element in left nav
       | setupOne    |
       | parameters  |
       | gradeLevels |
-    And grade levels as "<name>" ismini delete yapiniz.
+    And gedit user admin as "<searchName>" in grade levels
+
+    And User sending the keys in Dialog content
+      | nameInput  | <name>       |
+      | shortName  | <shortName>  |
+      | orderInput | <orderInput> |
+    And Click on the element in the Dialog
+      | saveButton |
+    Then Success message should be displayed
+    Examples:
+      | searchName | name | shortName | orderInput |
+      | al         | ma   | pe       | 11          |
+      | ka         | hir  | in        | 12          |
+
+
+  Scenario Outline:Delete Grade level to set up details of parameters
+
+    And Click on the element in left nav
+      | setupOne    |
+      | parameters  |
+      | gradeLevels |
+    And delete user admin as "<searchName>" in grade levels
 
     Then Success message should be displayed
     Examples:
-      | name |
-      | al   |
-      | ka   |
+      | searchName |
+      | ma          |
+      | hir         |
+
+
+
